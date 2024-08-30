@@ -3,16 +3,10 @@
   "extends": ["config:recommended"],
   "rebaseWhen": "behind-base-branch",
   "schedule": ["every weekday"],
-  "automergeSchedule": ["every monday", "every tuesday", "every friday"],
+  "automergeSchedule": ["on Monday and Thursday and Friday"],
   "prHourlyLimit": 2,
   "prConcurrentLimit": 5,
-  "assignees": [
-    "saltas888",
-    "juansrlopes",
-    "darshgun",
-    "pedrorainho-dealroom",
-    "JazzyGrim"
-  ],
+  "assignees": ["saltas888", "juansrlopes", "darshgun", "JazzyGrim"],
   "assigneesSampleSize": 2,
   "vulnerabilityAlerts": {
     "labels": ["security"],
@@ -23,10 +17,9 @@
   "packageRules": [
     {
       "description": "Automatically merge minor and patch-level updates",
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchCurrentVersion": "!/^0/",
+      "matchUpdateTypes": ["minor", "patch", "pin"],
       "labels": ["minor-patch-update"],
-      "automerge": false
+      "automerge": true
     },
     {
       "matchUpdateTypes": ["major"],
@@ -83,4 +76,3 @@
     }
   ]
 }
-  
