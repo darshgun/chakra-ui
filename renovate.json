@@ -1,0 +1,86 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "rebaseWhen": "behind-base-branch",
+  "schedule": ["every weekday"],
+  "automergeSchedule": ["every monday", "every tuesday", "every friday"],
+  "prHourlyLimit": 2,
+  "prConcurrentLimit": 5,
+  "assignees": [
+    "saltas888",
+    "juansrlopes",
+    "darshgun",
+    "pedrorainho-dealroom",
+    "JazzyGrim"
+  ],
+  "assigneesSampleSize": 2,
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "automerge": false
+  },
+  "labels": ["dependencies"],
+  "ignoreDeps": ["react", "react-dom"],
+  "packageRules": [
+    {
+      "description": "Automatically merge minor and patch-level updates",
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "!/^0/",
+      "labels": ["minor-patch-update"],
+      "automerge": false
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "labels": ["major-update"]
+    },
+    {
+      "matchDepTypes": ["dependencies"],
+      "labels": ["production-dependencies"]
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "labels": ["dev-dependencies"]
+    },
+    {
+      "matchPackagePatterns": ["^@types/"],
+      "groupName": "typescript-types",
+      "labels": ["typescript-types"]
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "matchPackagePatterns": ["eslint", "prettier", "stylelint"],
+      "groupName": "linting",
+      "labels": ["linting"]
+    },
+    {
+      "matchPackagePatterns": ["^@babel/"],
+      "groupName": "babel",
+      "labels": ["babel"]
+    },
+    {
+      "matchPackagePatterns": ["^@storybook/"],
+      "groupName": "storybook",
+      "labels": ["storybook"]
+    },
+    {
+      "matchPackagePatterns": ["^@testing-library/"],
+      "groupName": "testing-library",
+      "labels": ["testing"]
+    },
+    {
+      "matchPackagePatterns": ["^@radix-ui/"],
+      "groupName": "radix-ui",
+      "labels": ["ui"]
+    },
+    {
+      "matchPackageNames": ["react", "react-dom"],
+      "groupName": "react",
+      "labels": ["react", "major-update"]
+    },
+    {
+      "matchPackageNames": ["typescript"],
+      "groupName": "typescript",
+      "labels": ["typescript", "major-update"]
+    }
+  ]
+}
+  
